@@ -34,5 +34,8 @@
 		"vite": "^4.2.0",
 		"vitest": "^0.29.8"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"bootstrap-icons": "^1.10.4"
+	}
 }

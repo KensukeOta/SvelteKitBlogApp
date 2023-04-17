@@ -1,5 +1,6 @@
 <script lang="ts">
-
+  import { page } from "$app/stores";
+	import LogoutButton from "../atoms/LogoutButton.svelte";
 </script>
 
 <header class="flex justify-between items-center border-b">
@@ -18,7 +19,11 @@
     <button title="検索">
       <i class="bi bi-search"></i>
     </button>
-    <a href="/signup" class="inline-block">新規登録</a>
-    <a href="/login" class="inline-block">ログイン</a>
+    {#if !$page.data.user}
+      <a href="/signup" class="inline-block">新規登録</a>
+      <a href="/login" class="inline-block">ログイン</a>
+    {:else}
+      <LogoutButton />
+    {/if}
   </nav>
 </header>

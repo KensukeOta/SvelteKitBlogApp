@@ -46,9 +46,8 @@
       if (!res.ok) {
         errors = await res.json();
         throw new Error(errors.message);
-      } else {
-        goto("/");
       }
+      goto("/");
     } catch (error) {
       console.log(error);
     }

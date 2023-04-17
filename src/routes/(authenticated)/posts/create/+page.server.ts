@@ -4,6 +4,10 @@ import { fail, redirect } from "@sveltejs/kit";
 export const load: PageServerLoad = (async ({ locals }) => {
   const user = locals.user;
 
+  if (!user) {
+    throw redirect(307, "/login");
+  }
+
   return {
     user,
   };

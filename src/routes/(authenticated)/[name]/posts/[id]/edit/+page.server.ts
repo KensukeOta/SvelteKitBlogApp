@@ -20,6 +20,10 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
   } catch (error) {
     console.log(error);
   }
+
+  if (!user || user.id !== post.user_id) {
+    throw redirect(307, "/");
+  }
   
   return {
     user,

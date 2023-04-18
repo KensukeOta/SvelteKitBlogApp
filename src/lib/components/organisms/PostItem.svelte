@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Post } from "$lib/types/Post";
+  import { page } from "$app/stores";
 	import PostEditLinkButton from "../atoms/PostEditLinkButton.svelte";
 
   export let post: Post;
@@ -11,6 +12,8 @@
   </a>
   <nav class="flex justify-between">
     by {post.user.name}
-    <PostEditLinkButton {post} />
+    {#if $page.data.user && $page.data.user.id === post.user_id}
+      <PostEditLinkButton {post} />
+    {/if}
   </nav>
 </article>

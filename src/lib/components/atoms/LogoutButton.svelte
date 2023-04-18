@@ -3,19 +3,27 @@
   import Cookies from "js-cookie";
   
   const handleSubmit = async () => {
-    await fetch(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`, {
-      credentials: "include",
-    });
-    await fetch(`${import.meta.env.VITE_API_URL}/v1/users/logout`, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN") ?? ""
-      },
-      credentials: "include",
-    });
-    goto("/login");
+    try {
+      await fetch(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`, {
+        credentials: "include",
+      });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/v1/users/logout`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN") ?? ""
+        },
+        credentials: "include",
+      });
+      if (!res.ok) {
+        const errors = await res.json();
+        throw new Error(errors.message);
+      }
+      goto("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
 </script>
 

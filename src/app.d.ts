@@ -8,7 +8,8 @@ declare global {
 		}
 		interface PageData {
 			user: import("$lib/types/User").User;
-			posts: import("$lib/types/Post").Post[];
+			post?: import("$lib/types/Post").Post;
+			posts?: import("$lib/types/Post").Post[];
 		}
 		// interface Platform {}
 	}

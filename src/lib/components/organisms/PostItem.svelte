@@ -5,8 +5,8 @@
 </script>
 
 <article class="border p-2">
-  <h2 class="font-bold">Test</h2>
+  <h2 class="font-bold">{post.title}</h2>
   <nav class="flex justify-between">
-    by kensuke
+    by {post.user.name}
   </nav>
 </article>

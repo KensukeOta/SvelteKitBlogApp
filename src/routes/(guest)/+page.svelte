@@ -16,4 +16,6 @@
   <PostLinkButton />
 </nav>
 
-<PostItem />
+{#each data.posts as post (post.id)}
+  <PostItem post={post} />
+{/each}

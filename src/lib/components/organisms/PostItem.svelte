@@ -2,6 +2,7 @@
 	import type { Post } from "$lib/types/Post";
   import { page } from "$app/stores";
 	import PostEditLinkButton from "../atoms/PostEditLinkButton.svelte";
+	import PostDeleteButton from "../atoms/PostDeleteButton.svelte";
 
   export let post: Post;
 </script>
@@ -14,6 +15,7 @@
     by {post.user.name}
     {#if $page.data.user && $page.data.user.id === post.user_id}
       <PostEditLinkButton {post} />
+      <PostDeleteButton {post} />
     {/if}
   </nav>
 </article>

@@ -14,11 +14,11 @@
         "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN") ?? ""
       },
       credentials: "include",
-    })
+    });
     goto("/login");
   };
 </script>
 
 <form method="POST" on:submit|preventDefault={handleSubmit} class="inline-block">
-  <button>ログアウト</button>
+  <button type="submit">ログアウト</button>
 </form>

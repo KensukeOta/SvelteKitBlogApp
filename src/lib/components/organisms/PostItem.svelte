@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Post } from "$lib/types/Post";
+	import PostEditLinkButton from "../atoms/PostEditLinkButton.svelte";
 
   export let post: Post;
 </script>
@@ -10,5 +11,6 @@
   </a>
   <nav class="flex justify-between">
     by {post.user.name}
+    <PostEditLinkButton {post} />
   </nav>
 </article>

@@ -5,7 +5,9 @@
 </script>
 
 <article class="border p-2">
-  <h2 class="font-bold">{post.title}</h2>
+  <a href={`${post.user.name}/posts/${post.id}`}>
+    <h2 class="font-bold">{post.title}</h2>
+  </a>
   <nav class="flex justify-between">
     by {post.user.name}
   </nav>

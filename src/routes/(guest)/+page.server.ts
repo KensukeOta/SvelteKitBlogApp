@@ -1,5 +1,4 @@
 import type { PageServerLoad } from "./$types";
-import type { Post } from "$lib/types/Post";
 
 export const load: PageServerLoad = (async ({ fetch, locals }) => {
   const user = locals.user;
@@ -7,7 +6,11 @@ export const load: PageServerLoad = (async ({ fetch, locals }) => {
   let posts;
 
   try {
-    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/posts`);
+    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/posts`, {
+      headers: {
+        "Accept": "application/json",
+      },
+    });
     if (!res.ok) {
       const errors = await res.json();
       throw new Error(errors.message);

@@ -1,6 +1,7 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
 	import PostLinkButton from "$lib/components/atoms/PostLinkButton.svelte";
-import type { PageData } from "./$types";
+	import PostItem from "$lib/components/organisms/PostItem.svelte";
 
   export let data: PageData;
 </script>
@@ -14,3 +15,5 @@ import type { PageData } from "./$types";
 <nav class="text-center">
   <PostLinkButton />
 </nav>
+
+<PostItem />

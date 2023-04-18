@@ -14,7 +14,7 @@ export const load: PageServerLoad = (async ({ locals }) => {
 })
 
 export const actions: Actions = {
-  default: async ({ cookies, fetch, params, request }) => {
+  default: async ({ cookies, fetch, request }) => {
     const data = await request.formData();
     let errors;
     

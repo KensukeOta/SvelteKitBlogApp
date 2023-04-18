@@ -14,7 +14,7 @@
         "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN") ?? ""
       },
       credentials: "include",
-    })
+    });
     goto("/login");
   };
 </script>

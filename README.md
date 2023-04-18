@@ -1,4 +1,4 @@
-# SvelteLaravelBlogApp
+# SvelteKitBlogApp
 SvelteKitを使用した完全SPAのブログアプリです。
 
 ## 使用した技術・ツール

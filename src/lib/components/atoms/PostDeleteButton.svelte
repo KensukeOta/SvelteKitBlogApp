@@ -24,7 +24,7 @@
         const errors = await res.json();
         throw new Error(errors.message);
       }
-      await invalidateAll();
+      invalidateAll();
     } catch (error) {
       console.log(error);
     }

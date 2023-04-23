@@ -12,12 +12,14 @@
 
 <p>Welcome! {data.user ? data.user.name : "stranger"}</p>
 
-<nav class="text-center">
+<nav class="text-center my-2">
   <PostLinkButton />
 </nav>
 
-{#each data.posts as post (post.id)}
-  <PostItem {post} />
-{:else}
-  <p class="font-bold text-center p-2">記事が投稿されていません</p>
-{/each}
+<section>
+  {#each data.posts as post (post.id)}
+    <PostItem {post} />
+  {:else}
+    <p class="font-bold text-center p-2">記事が投稿されていません</p>
+  {/each}
+</section>

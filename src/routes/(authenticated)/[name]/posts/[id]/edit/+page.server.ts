@@ -4,7 +4,7 @@ import type { Actions, PageServerLoad } from "./$types";
 export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
   const user = locals.user
   let res;
-  let post;
+  let data;
 
   try {
     res = await fetch(`${import.meta.env.VITE_API_URL}/v1/posts/${params.id}`, {
@@ -16,18 +16,18 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
       const errors = await res.json();
       throw new Error(errors.message)
     }
-    post = await res.json();
+    data = await res.json();
   } catch (error) {
     console.log(error);
   }
 
-  if (!user || user.id !== post.user_id) {
+  if (!user || user.id !== data.post.user_id) {
     throw redirect(307, "/");
   }
   
   return {
     user,
-    post,
+    post: data.post,
   };
 })
 

@@ -3,7 +3,7 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = (async ({ fetch, locals }) => {
   const user = locals.user;
   let res;
-  let posts;
+  let data;
 
   try {
     res = await fetch(`${import.meta.env.VITE_API_URL}/v1/posts`, {
@@ -15,13 +15,13 @@ export const load: PageServerLoad = (async ({ fetch, locals }) => {
       const errors = await res.json();
       throw new Error(errors.message);
     }
-    posts = await res.json();
+    data = await res.json();
   } catch (error) {
     console.log(error);
   }
 
   return {
     user,
-    posts,
+    posts: data.posts,
   };
 })

@@ -3,6 +3,7 @@
   import { page } from "$app/stores";
 	import PostEditLinkButton from "../atoms/PostEditLinkButton.svelte";
 	import PostDeleteButton from "../atoms/PostDeleteButton.svelte";
+	import LikeArea from "../molecules/LikeArea.svelte";
 
   export let post: Post;
 </script>
@@ -11,8 +12,9 @@
   <a href={`${post.user.name}/posts/${post.id}`}>
     <h2 class="font-bold">{post.title}</h2>
   </a>
+  <p>by {post.user.name}</p>
   <nav class="flex justify-between">
-    by {post.user.name}
+    <LikeArea {post} />
     {#if $page.data.user && $page.data.user.id === post.user_id}
       <PostEditLinkButton {post} />
       <PostDeleteButton {post} />

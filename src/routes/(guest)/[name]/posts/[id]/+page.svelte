@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
+  import LikeArea from "$lib/components/molecules/LikeArea.svelte";
 
   export let data: PageData
 </script>
@@ -12,3 +13,4 @@
 
 <p class="text-base whitespace-pre-line">{data.post.body}</p>
 
+<LikeArea post={data.post} />

@@ -8,6 +8,8 @@
 
   export let post: Post;
 
+  $: result = post.likes.findIndex((like) => like.user_id === ($page.data.user && $page.data.user.id));
+
   const handleSubmit = async () => {
     if (!$page.data.user) {
       alert("ログインしていないので「いいね」をすることができません");
@@ -41,7 +43,7 @@
 
 <div class="flex gap-1">
   <form method="POST" on:submit|preventDefault={handleSubmit}>
-    <button><i class="bi bi-heart-fill text-gray-300"></i></button>
+    <button><i class={`${result !== -1 ? "bi bi-heart-fill text-red-500" : "bi bi-heart"}`}></i></button>
   </form>
   <span>{post.likes_count}</span>
 </div>

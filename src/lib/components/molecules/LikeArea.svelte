@@ -41,9 +41,11 @@
   };
 </script>
 
-<div class="flex gap-1">
+<div class="flex">
   <form method="POST" on:submit|preventDefault={handleSubmit}>
-    <button><i class={`${result !== -1 ? "bi bi-heart-fill text-red-500" : "bi bi-heart"}`}></i></button>
+    <button class={`rounded-full px-1 ${result !== -1 ? "text-red-500 hover:bg-gray-200" : "hover:text-red-500 hover:bg-pink-100"}`}>
+      <i class={`${result !== -1 ? "bi bi-heart-fill" : "bi bi-heart"}`}></i>
+    </button>
   </form>
   <span>{post.likes_count}</span>
 </div>

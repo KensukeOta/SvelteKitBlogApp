@@ -12,7 +12,7 @@
 
   const handleSubmit = async () => {
     if (!$page.data.user) {
-      alert("ログインしていないので「いいね」をすることができません");
+      alert("ログインしていないため「いいね」をすることができません");
       return;
     }
     
@@ -44,7 +44,7 @@
 <div class="flex">
   <form method="POST" on:submit|preventDefault={handleSubmit}>
     <button class={`rounded-full px-1 ${result !== -1 ? "text-red-500 hover:bg-gray-200" : "hover:text-red-500 hover:bg-pink-100"}`}>
-      <i class={`${result !== -1 ? "bi bi-heart-fill" : "bi bi-heart"}`}></i>
+      <i class={result !== -1 ? "bi bi-heart-fill" : "bi bi-heart"}></i>
     </button>
   </form>
   <span>{post.likes_count}</span>

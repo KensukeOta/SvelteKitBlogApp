@@ -27,6 +27,6 @@
   };
 </script>
 
-<form method="POST" on:submit|preventDefault={handleSubmit} class="inline-block">
-  <button type="submit">ログアウト</button>
+<form method="POST" on:submit|preventDefault={handleSubmit} class="inline-block w-full">
+  <button type="submit" class="w-full">ログアウト</button>
 </form>

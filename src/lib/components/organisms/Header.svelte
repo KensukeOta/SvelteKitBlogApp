@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
-	import LogoutButton from "../atoms/LogoutButton.svelte";
+	import AvatarDropdownToggle from "../molecules/AvatarDropdownToggle.svelte";
 </script>
 
 <header class="flex justify-between items-center border-b">
@@ -16,14 +16,14 @@
   </div>
 
   <nav class="leading-9">
-    <button title="検索">
+    <button title="検索" class="px-2">
       <i class="bi bi-search"></i>
     </button>
     {#if !$page.data.user}
       <a href="/signup" class="inline-block">新規登録</a>
       <a href="/login" class="inline-block">ログイン</a>
     {:else}
-      <LogoutButton />
+      <AvatarDropdownToggle />
     {/if}
   </nav>
 </header>

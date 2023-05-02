@@ -24,3 +24,4 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - 記事更新機能
 - 記事削除機能
 - いいね機能
+- いいねした記事の一覧表示機能

@@ -9,7 +9,7 @@
 </script>
 
 <article class="border p-2">
-  <a href={`${post.user.name}/posts/${post.id}`}>
+  <a href={`/${post.user.name}/posts/${post.id}`}>
     <h2 class="font-bold">{post.title}</h2>
   </a>
   <p>by {post.user.name}</p>

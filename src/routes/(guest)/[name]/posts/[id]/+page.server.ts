@@ -1,4 +1,5 @@
 import type { PageServerLoad } from "./$types";
+import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
   const user = locals.user
@@ -18,6 +19,10 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
     data = await res.json();
   } catch (error) {
     console.log(error);
+  }
+
+  if (data.post.user.name !== params.name) {
+    throw redirect(307, "/");
   }
   
   return {

@@ -3,7 +3,7 @@ SvelteKitを使用した完全SPAのブログアプリです。
 
 ## 使用した技術・ツール
 - 開発環境: __Docker__, __docker compose__
-- バックエンド: __Laravel10.6.2__
+- バックエンド: __Laravel10.9.0__
 https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - フロントエンド: __SvelteKit__
 - CSSフレームワーク: __Tailwind CSS__

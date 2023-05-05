@@ -21,7 +21,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
     console.log(error);
   }
 
-  if (!user || user.id !== data.post.user_id || user.name !== params.name) {
+  if (!user || user.id !== data.post.user_id || data.post.user.name !== params.name) {
     throw redirect(307, "/");
   }
   

@@ -2,7 +2,7 @@ import { fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
-  const user = locals.user
+  const authUser = locals.authUser;
   let res;
   let data;
 
@@ -21,12 +21,12 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
     console.log(error);
   }
 
-  if (!user || user.id !== data.post.user_id || data.post.user.name !== params.name) {
+  if (!authUser || authUser.id !== data.post.user_id || data.post.user.name !== params.name) {
     throw redirect(307, "/");
   }
   
   return {
-    user,
+    authUser,
     post: data.post,
   };
 })

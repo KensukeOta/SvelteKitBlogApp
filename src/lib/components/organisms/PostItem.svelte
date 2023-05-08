@@ -15,7 +15,7 @@
   <p>by {post.user.name}</p>
   <nav class="flex justify-between">
     <LikeArea {post} />
-    {#if $page.data.user && $page.data.user.id === post.user_id}
+    {#if $page.data.authUser && $page.data.authUser.id === post.user_id}
       <PostEditLinkButton {post} />
       <PostDeleteButton {post} />
     {/if}

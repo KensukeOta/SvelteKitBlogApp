@@ -19,7 +19,7 @@
     <button title="検索" class="px-2">
       <i class="bi bi-search"></i>
     </button>
-    {#if !$page.data.user}
+    {#if !$page.data.authUser}
       <a href="/signup" class="inline-block">新規登録</a>
       <a href="/login" class="inline-block">ログイン</a>
     {:else}

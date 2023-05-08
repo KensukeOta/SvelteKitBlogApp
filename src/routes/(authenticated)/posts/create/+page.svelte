@@ -11,4 +11,4 @@
   <title>記事投稿フォーム - SvelteKitBlogApp</title>
 </svelte:head>
 
-<PostForm title={form?.title ?? ""} body={form?.body ?? ""} errors={form?.errors ?? ""} user={data.user}  />
+<PostForm title={form?.title ?? ""} body={form?.body ?? ""} errors={form?.errors ?? ""} authUser={data.authUser}  />

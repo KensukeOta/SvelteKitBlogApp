@@ -2,9 +2,9 @@ import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ fetch, locals, params }) => {
-  const user = locals.user;
+  const authUser = locals.authUser;
   
-  if (!user || user.name !== params.name) {
+  if (!authUser || authUser.name !== params.name) {
     throw redirect(307, "/");
   }
   
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ fetch, locals, params }) => {
   let data;
 
   try {
-    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/likes/${user.id}`, {
+    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/likes/${authUser.id}`, {
       headers: {
         "Accept": "application/json",
       },
@@ -28,7 +28,7 @@ export const load: PageServerLoad = async ({ fetch, locals, params }) => {
 
 
   return {
-    user,
+    authUser,
     posts: data.posts,
   };
 };

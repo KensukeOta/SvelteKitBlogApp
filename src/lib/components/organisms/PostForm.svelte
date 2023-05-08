@@ -5,7 +5,7 @@
 	import PostArea from "../molecules/PostArea.svelte";
 	import TitleArea from "../molecules/TitleArea.svelte";
 
-  export let user: User;
+  export let authUser: User;
   
   export let title: FormDataEntryValue;
   export let body: FormDataEntryValue;
@@ -32,7 +32,7 @@
     type: "hidden",
     name: "user_id",
     id: "user_id",
-    value: `${user.id}`,
+    value: `${authUser.id}`,
     placeholder: "",
     className: "",
   };

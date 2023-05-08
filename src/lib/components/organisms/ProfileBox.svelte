@@ -1,8 +1,13 @@
 <script lang="ts">
 	import type { User } from "$lib/types/User";
+  import { page } from "$app/stores";
 	import Avatar from "../atoms/Avatar.svelte";
+	import FollowButton from "../atoms/FollowButton.svelte";
+	import UnfollowButton from "../atoms/UnfollowButton.svelte";
 
   export let user: User;
+
+  $: result = user.followers.findIndex((follower) => follower.id === ($page.data.authUser && $page.data.authUser.id));
 
   const avatarProps = {
     src: user.avatar ? user.avatar : "/noavatar.jpeg",
@@ -30,4 +35,10 @@
       フォロワー
     </a>
   </section>
+
+  {#if result !== -1}
+    <UnfollowButton {user} />
+  {:else if !$page.data.authUser || $page.data.authUser.id !== user.id}
+    <FollowButton {user} />
+  {/if}
 </section>

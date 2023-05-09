@@ -5,7 +5,6 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			authUser: import("$lib/types/User").User;
-			user: import("$lib/types/User").User;
 		}
 		interface PageData {
 			authUser: import("$lib/types/User").User;

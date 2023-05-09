@@ -47,5 +47,5 @@
       <i class={result !== -1 ? "bi bi-heart-fill" : "bi bi-heart"}></i>
     </button>
   </form>
-  <span>{post.likes_count}</span>
+  <span>{post.likes.length}</span>
 </div>

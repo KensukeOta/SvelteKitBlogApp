@@ -10,7 +10,7 @@
   <title>SvelteKitBlogApp</title>
 </svelte:head>
 
-<p>Welcome! {data.user ? data.user.name : "stranger"}</p>
+<p>Welcome! {data.authUser ? data.authUser.name : "stranger"}</p>
 
 <nav class="text-center my-2">
   <PostLinkButton />

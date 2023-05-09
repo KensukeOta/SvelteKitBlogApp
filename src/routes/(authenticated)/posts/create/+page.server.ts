@@ -2,14 +2,14 @@ import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = (async ({ locals }) => {
-  const user = locals.user;
+  const authUser = locals.authUser;
 
-  if (!user) {
+  if (!authUser) {
     throw redirect(307, "/login");
   }
 
   return {
-    user,
+    authUser,
   };
 })
 

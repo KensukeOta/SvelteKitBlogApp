@@ -8,15 +8,15 @@
 
   export let post: Post;
 
-  $: result = post.likes.findIndex((like) => like.user_id === ($page.data.user && $page.data.user.id));
+  $: result = post.likes.findIndex((like) => like.user_id === ($page.data.authUser && $page.data.authUser.id));
 
   const handleSubmit = async () => {
-    if (!$page.data.user) {
+    if (!$page.data.authUser) {
       alert("ログインしていないため「いいね」をすることができません");
       return;
     }
     
-    const user_id = $page.data.user.id;
+    const user_id = $page.data.authUser.id;
     const post_id = post.id;
     
     try {
@@ -47,5 +47,5 @@
       <i class={result !== -1 ? "bi bi-heart-fill" : "bi bi-heart"}></i>
     </button>
   </form>
-  <span>{post.likes_count}</span>
+  <span>{post.likes.length}</span>
 </div>

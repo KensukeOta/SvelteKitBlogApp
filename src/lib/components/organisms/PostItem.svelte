@@ -9,13 +9,15 @@
 </script>
 
 <article class="border p-2">
-  <a href={`/${post.user.name}/posts/${post.id}`}>
-    <h2 class="font-bold">{post.title}</h2>
-  </a>
-  <p>by {post.user.name}</p>
+  <h2 class="font-bold">
+    <a href={`/${post.user.name}/posts/${post.id}`} class="inline-block w-full hover:underline">
+      {post.title}
+    </a>
+  </h2>
+  <p>by <a href={`/${post.user.name}`} class="hover:underline">{post.user.name}</a></p>
   <nav class="flex justify-between">
     <LikeArea {post} />
-    {#if $page.data.user && $page.data.user.id === post.user_id}
+    {#if $page.data.authUser && $page.data.authUser.id === post.user_id}
       <PostEditLinkButton {post} />
       <PostDeleteButton {post} />
     {/if}

@@ -45,5 +45,5 @@
   <TitleArea {...titleProps} />
   <PostArea {...postProps} />
   <Input {...userIdProps} />
-  <button type="submit" class="border bg-blue-400 rounded-3xl w-48 text-white py-2 mt-2 hover:bg-blue-300">投稿する</button>
+  <button type="submit" class="border bg-blue-400 rounded-3xl w-48 text-white py-2 mt-2 hover:bg-blue-300">更新する</button>
 </form>

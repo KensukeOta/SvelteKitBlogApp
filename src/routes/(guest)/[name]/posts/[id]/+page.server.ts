@@ -2,7 +2,7 @@ import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
-  const user = locals.user
+  const authUser = locals.authUser;
   let res;
   let data;
 
@@ -26,7 +26,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
   }
   
   return {
-    user,
+    authUser,
     post: data.post,
   };
 })

@@ -12,7 +12,7 @@ export const handle: Handle = (async ({ event, resolve }) => {
         const errors = await res.json();
         throw new Error(errors.message);
       }
-      event.locals.user = await res.json();
+      event.locals.authUser = await res.json();
     }
   } catch (error) {
     console.log(error)

@@ -10,7 +10,7 @@
   };
 
   const avatarProps = {
-    src: $page.data.user.avatar ? $page.data.user.avatar : "/noavatar.jpeg",
+    src: $page.data.authUser.avatar ? $page.data.authUser.avatar : "/noavatar.jpeg",
     className: "inline-block border h-8 w-8 object-cover rounded-full"
   };
 </script>
@@ -20,7 +20,7 @@
   on:mouseleave={toggleDropdown}
 >
   <Avatar {...avatarProps}  />
-  <span class="ml-1">{$page.data.user.name}</span>
+  <span class="ml-1">{$page.data.authUser.name}</span>
   <i class="bi bi-caret-down-fill text-xs"></i>
 
   {#if showDropdown}

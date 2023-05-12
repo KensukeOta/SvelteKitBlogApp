@@ -3,12 +3,16 @@
 	import { invalidateAll } from "$app/navigation";
   import Cookies from "js-cookie";
 
+  let isSubmitting = false;
+
   export let post: Post;
 
   const handleSubmit = async () => {
     if (!confirm("この記事を削除しますか？")) {
       return;
     }
+
+    isSubmitting = true;
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/v1/posts/${post.id}`, {
@@ -24,13 +28,15 @@
         const errors = await res.json();
         throw new Error(errors.message);
       }
-      invalidateAll();
+      await invalidateAll();
     } catch (error) {
       console.log(error);
+    } finally {
+      isSubmitting = false;
     }
   };
 </script>
 
 <form method="POST" on:submit|preventDefault={handleSubmit} class="inline-block">
-  <button type="submit" class="text-red-500">削除</button>
+  <button type="submit" disabled={isSubmitting} class="text-red-500">削除</button>
 </form>

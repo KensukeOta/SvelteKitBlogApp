@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { SubmitFunction } from "$app/forms";
 	import type { User } from "$lib/types/User";
 	import { enhance } from "$app/forms";
 	import Input from "../atoms/Input.svelte";
@@ -10,6 +11,15 @@
   export let title: FormDataEntryValue;
   export let body: FormDataEntryValue;
   export let errors: any;
+
+  const handleSubmit: SubmitFunction = ({ submitter }) => {
+    submitter?.setAttribute("disabled", "true");
+
+    return async ({ update }) => {
+      await update();
+      submitter?.removeAttribute("disabled");
+    };
+  };
 
   const titleProps = {
     type: "text",
@@ -38,7 +48,7 @@
   };
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" use:enhance={handleSubmit}>
   {#if errors}
     <p class="text-red-500">{errors.message}</p>
   {/if}

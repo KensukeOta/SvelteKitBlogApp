@@ -4,6 +4,8 @@
 	import { invalidateAll } from "$app/navigation";
   import Cookies from "js-cookie";
 
+  let isSubmitting = false;
+  
   let errors: any;
 
   export let user: User;
@@ -13,6 +15,8 @@
       alert("ログインしていないためフォローをすることができません");
       return;
     }
+
+    isSubmitting = true;
     
     const follower_id = $page.data.authUser.id;
     const followee_id = user.id;
@@ -32,13 +36,20 @@
         errors = await res.json();
         throw new Error(errors.message);
       }
-      invalidateAll();
+      await invalidateAll();
     } catch (error) {
       console.log(error);
+    } finally {
+      isSubmitting = false;
     }
   };
 </script>
 
 <form method="POST" on:submit|preventDefault={handleSubmit}>
-  <button class="inline-block border font-bold mt-6 py-1 rounded-lg w-full hover:bg-gray-200">フォロー</button>
+  <button 
+    class="inline-block border font-bold mt-6 py-1 rounded-lg w-full hover:bg-gray-200"
+    disabled={isSubmitting}
+  >
+    フォロー
+  </button>
 </form>

@@ -4,6 +4,8 @@
 	import EmailArea from "../molecules/EmailArea.svelte";
 	import PasswordArea from "../molecules/PasswordArea.svelte";
 
+  let isSubmitting = false;
+
   let errors: any;
 
   const emailProps = {
@@ -25,6 +27,8 @@
   };
 
   const handleSubmit = async (event: any) => {
+    isSubmitting = true;
+    
     const data = new FormData(event.target);
     const email = data.get("email");
     const password = data.get("password");
@@ -47,9 +51,11 @@
         errors = await res.json();
         throw new Error(errors.message);
       }
-      goto("/");
+      await goto("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      isSubmitting = false;
     }
   };
 </script>
@@ -64,6 +70,6 @@
     {/if}
       <EmailArea {...emailProps} />
       <PasswordArea {...passwordProps} />
-      <button type="submit" class="border bg-blue-400 rounded-3xl w-1/2 text-white py-2 mt-2 hover:bg-blue-300">ログイン</button>
+      <button type="submit" disabled={isSubmitting} class="border bg-blue-400 rounded-3xl w-1/2 text-white py-2 mt-2 hover:bg-blue-300">ログイン</button>
   </fieldset>
 </form>

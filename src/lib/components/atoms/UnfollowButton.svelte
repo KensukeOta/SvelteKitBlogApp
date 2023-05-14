@@ -9,6 +9,7 @@
   let errors: any;
 
   export let user: User;
+  export let className: string;
   
   const handleSubmit = async () => {
     isSubmitting = true;
@@ -42,7 +43,7 @@
 
 <form method="POST" on:submit|preventDefault={handleSubmit}>
   <button 
-    class="inline-block bg-blue-400 border font-bold mt-6 py-1 rounded-lg text-white w-full hover:bg-blue-300"
+    class={className}
     disabled={isSubmitting}
   >
     フォロー中

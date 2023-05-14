@@ -6,7 +6,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
   let data;
 
   try {
-    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/users/${params.name}/followers`, {
+    res = await fetch(`${import.meta.env.VITE_API_URL}/v1/users/${params.name}`, {
       headers: {
         "Accept": "application/json",
       },
@@ -22,6 +22,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
 
   return {
     authUser,
-    followers: data.followers,
+    user: data.user,
   };
 })

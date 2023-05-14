@@ -37,8 +37,8 @@
   </section>
 
   {#if result !== -1}
-    <UnfollowButton {user} />
+    <UnfollowButton {user} className="inline-block bg-blue-400 border font-bold mt-6 py-1 rounded-lg text-white w-full hover:bg-blue-300" />
   {:else if !$page.data.authUser || $page.data.authUser.id !== user.id}
-    <FollowButton {user} />
+    <FollowButton {user} className="inline-block border font-bold mt-6 py-1 rounded-lg w-full hover:bg-gray-200 " />
   {/if}
 </section>

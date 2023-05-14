@@ -9,6 +9,7 @@
   let errors: any;
 
   export let user: User;
+  export let className: string;
   
   const handleSubmit = async () => {
     if (!$page.data.authUser) {
@@ -47,7 +48,7 @@
 
 <form method="POST" on:submit|preventDefault={handleSubmit}>
   <button 
-    class="inline-block border font-bold mt-6 py-1 rounded-lg w-full hover:bg-gray-200"
+    class={className}
     disabled={isSubmitting}
   >
     フォロー

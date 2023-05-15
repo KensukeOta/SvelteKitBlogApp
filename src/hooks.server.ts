@@ -2,7 +2,7 @@ import type { Handle } from "@sveltejs/kit";
 
 export const handle: Handle = (async ({ event, resolve }) => {
   try {
-    if (!event.locals.user) {
+    if (!event.locals.authUser) {
       const res = await event.fetch(`${import.meta.env.VITE_API_URL}/v1/user`, {
         headers: {
           Accept: "application/json",
@@ -12,7 +12,8 @@ export const handle: Handle = (async ({ event, resolve }) => {
         const errors = await res.json();
         throw new Error(errors.message);
       }
-      event.locals.authUser = await res.json();
+      const data = await res.json();
+      event.locals.authUser = data.authUser;
     }
   } catch (error) {
     console.log(error)

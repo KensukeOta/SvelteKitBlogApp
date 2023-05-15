@@ -1,11 +1,20 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+	import type { User } from "$lib/types/User";
 	import Avatar from "$lib/components/atoms/Avatar.svelte";
 	import ProfileBox from "$lib/components/organisms/ProfileBox.svelte";
 	import UnfollowButton from "$lib/components/atoms/UnfollowButton.svelte";
 	import FollowButton from "$lib/components/atoms/FollowButton.svelte";
 
   export let data: PageData;
+
+  const isFollowing = (followerId: number): boolean => {
+    if (!data.authUser) {
+      return false;
+    }
+
+    return data.authUser.followings.some((following: User) => following.id === followerId);
+  };
 </script>
 
 <svelte:head>
@@ -31,7 +40,7 @@
           <div>
             {#if data.authUser && data.authUser.id === follower.id}
               <span></span>
-            {:else if data.authUser && data.authUser.followings && data.authUser.followings.some(following => following.id === follower.id)}
+            {:else if isFollowing(follower.id)}
               <UnfollowButton user={follower} className="inline-block bg-blue-400 border font-bold px-4 py-1 rounded-lg text-white w-full hover:bg-blue-300" />
             {:else}
               <FollowButton user={follower} className="inline-block border font-bold px-4 py-1 rounded-lg w-full hover:bg-gray-200" />

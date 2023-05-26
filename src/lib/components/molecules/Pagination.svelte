@@ -21,6 +21,7 @@
     goto(`?page=${currentPage}`); // URLのクエリパラメータを更新してページ遷移
   };
 
+  //  記事を削除後、記事の数に変化があったら、リアクティブにページ番号ボタンの数が再描画される処理
   $: {
     totalPages = Math.ceil(totalItems / perPage);
     pages = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -28,6 +29,13 @@
 
   $: {
     updatePagination(); // 総ページ数とページ番号の配列を更新する
+
+    //  最後のページが1件だけのとき、その記事を削除したら、その前のページへ遷移する処理
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+      onPageChange(currentPage);
+      goto(`?page=${currentPage}`);
+    }
   }
 </script>
 

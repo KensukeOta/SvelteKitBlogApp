@@ -22,6 +22,11 @@
   };
 
   $: {
+    totalPages = Math.ceil(totalItems / perPage);
+    pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  $: {
     updatePagination(); // 総ページ数とページ番号の配列を更新する
   }
 </script>

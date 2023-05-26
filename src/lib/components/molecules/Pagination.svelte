@@ -22,12 +22,16 @@
     goto(`?page=${currentPage}`); // URLのクエリパラメータを更新してページ遷移
   };
 
+  let isReady = false;
+
   //  2ページ以降でブラウザをリロードしても、そのページを維持するロジック
   onMount(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const pageParam = urlParams.get("page");
     currentPage = pageParam ? +pageParam : 1;
     onPageChange(currentPage);
+    //  2ページ以降でブラウザをリロードした際の画面のちらつきを軽減させるロジック
+    isReady = true;
   });
 
   //  記事を削除後、記事の数に変化があったら、リアクティブにページ番号ボタンの数が再描画されるロジック
@@ -48,33 +52,35 @@
   }
 </script>
 
-<nav class="flex justify-center">
-  <ul class="flex">
-    {#if currentPage > 1}
-      <li>
-        <button class="h-10 rounded w-10 hover:bg-gray-200" on:click={() => changePage(currentPage - 1)}>
-          &laquo;
-        </button>
-      </li>
-    {/if}
+<div class={`${isReady ? "block" : "hidden"}`}>
+  <nav class="flex justify-center">
+    <ul class="flex">
+      {#if currentPage > 1}
+        <li>
+          <button class="h-10 rounded w-10 hover:bg-gray-200" on:click={() => changePage(currentPage - 1)}>
+            &laquo;
+          </button>
+        </li>
+      {/if}
 
-    {#each pages as page}
-      <li>
-        <button
-          class={`h-10 rounded w-10 hover:bg-gray-200 ${currentPage === page && "bg-blue-400 text-white pointer-events-none"}`}
-          on:click={() => changePage(page)}
-        >
-          {page}
-        </button>
-      </li>
-    {/each}
+      {#each pages as page}
+        <li>
+          <button
+            class={`h-10 rounded w-10 hover:bg-gray-200 ${currentPage === page && "bg-blue-400 text-white pointer-events-none"}`}
+            on:click={() => changePage(page)}
+          >
+            {page}
+          </button>
+        </li>
+      {/each}
 
-    {#if currentPage < totalPages}
-      <li>
-        <button class="h-10 rounded w-10 hover:bg-gray-200" on:click={() => changePage(currentPage + 1)}>
-          &raquo;
-        </button>
-      </li>
-    {/if}
-  </ul>
-</nav>
+      {#if currentPage < totalPages}
+        <li>
+          <button class="h-10 rounded w-10 hover:bg-gray-200" on:click={() => changePage(currentPage + 1)}>
+            &raquo;
+          </button>
+        </li>
+      {/if}
+    </ul>
+  </nav>
+</div>

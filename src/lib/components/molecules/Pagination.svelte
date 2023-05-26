@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
 
   export let currentPage = 1; // 現在のページ番号
   export let perPage = 5; // 1ページあたりのアイテム数
@@ -21,7 +22,15 @@
     goto(`?page=${currentPage}`); // URLのクエリパラメータを更新してページ遷移
   };
 
-  //  記事を削除後、記事の数に変化があったら、リアクティブにページ番号ボタンの数が再描画される処理
+  //  2ページ以降でブラウザをリロードしても、そのページを維持するロジック
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get("page");
+    currentPage = pageParam ? +pageParam : 1;
+    onPageChange(currentPage);
+  });
+
+  //  記事を削除後、記事の数に変化があったら、リアクティブにページ番号ボタンの数が再描画されるロジック
   $: {
     totalPages = Math.ceil(totalItems / perPage);
     pages = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -30,7 +39,7 @@
   $: {
     updatePagination(); // 総ページ数とページ番号の配列を更新する
 
-    //  最後のページが1件だけのとき、その記事を削除したら、その前のページへ遷移する処理
+    //  最後のページが1件だけのとき、その記事を削除したら、その前のページへ遷移するロジック
     if (currentPage > totalPages) {
       currentPage = totalPages;
       onPageChange(currentPage);

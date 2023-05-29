@@ -16,10 +16,25 @@
     pages = Array.from({ length: totalPages }, (_, i) => i + 1);  // ページ番号の配列を作成
   };
 
-  const changePage = (page: number) => {
+  const changePage = (page: number, updateUrl: boolean = true) => {
     currentPage = page; // 現在のページ番号を更新(ページ番号ボタンを更新)
     onPageChange(currentPage);  // ページ変更時のコールバック関数を呼び出す(記事を更新する)
-    goto(`?page=${currentPage}`); // URLのクエリパラメータを更新してページ遷移
+
+    if (updateUrl) {
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set("page", String(currentPage));
+      const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+
+      window.history.pushState({ page }, "", newUrl);
+    }
+  };
+
+  // ブラウザの「戻る」ボタンや「進む」ボタンが押されたときの処理
+  const handlePopstate = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get("page");
+    const page = pageParam ? +pageParam : 1;
+    changePage(page, false); // 第2引数を追加して、URLの更新を行わないようにする
   };
 
   let isReady = false;
@@ -30,6 +45,9 @@
     const pageParam = urlParams.get("page");
     currentPage = pageParam ? +pageParam : 1;
     onPageChange(currentPage);
+
+    // ブラウザの「戻る」や「進む」ボタンが押された時に発生する popstate イベントに対して、handlePopstate 関数を割り当てる
+    window.addEventListener("popstate", handlePopstate);
     //  2ページ以降でブラウザをリロードした際の画面のちらつきを軽減させるロジック
     isReady = true;
   });

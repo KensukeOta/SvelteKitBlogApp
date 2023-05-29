@@ -42,8 +42,8 @@
 </section>
 
 <Pagination
-    currentPage={1}
-    perPage={3}
+    currentPage={currentPage}
+    perPage={perPage}
     totalItems={data.posts.length}
     onPageChange={changePage}
 />

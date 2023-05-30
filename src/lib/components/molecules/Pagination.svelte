@@ -19,13 +19,17 @@
   const changePage = (page: number, updateUrl: boolean = true) => {
     currentPage = page; // 現在のページ番号を更新(ページ番号ボタンを更新)
     onPageChange(currentPage);  // ページ変更時のコールバック関数を呼び出す(記事を更新する)
-
+    
     if (updateUrl) {
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set("page", String(currentPage));
       const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-
+      
+      // URLの履歴を追加してページ遷移
       window.history.pushState({ page }, "", newUrl);
+
+      // URLのクエリパラメータを更新してページ遷移
+      goto(`?page=${currentPage}`, { replaceState: true });
     }
   };
 

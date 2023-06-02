@@ -1,6 +1,11 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { firstPage } from "$lib/stores/firstPage";
 	import AvatarDropdownToggle from "../molecules/AvatarDropdownToggle.svelte";
+
+  const goToTopPage = () => {
+    firstPage.set(1);
+  };
 </script>
 
 <header class="flex justify-between items-center border-b">
@@ -9,7 +14,7 @@
       <i class="bi bi-list"></i>
     </button>
     <h1 class="inline-block">
-      <a href="/" class="inline-block">
+      <a href="/" class="inline-block" on:click={goToTopPage}>
         <img src="/svelte-logo.svg" alt="Svelte Logo" width="24" height="24" class="inline-block" />
       </a>
     </h1>

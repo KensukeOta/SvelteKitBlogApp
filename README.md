@@ -26,3 +26,4 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - いいね機能
 - いいねした記事の一覧表示機能
 - フォロー機能
+- ページネーション機能

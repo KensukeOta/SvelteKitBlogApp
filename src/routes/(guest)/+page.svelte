@@ -8,7 +8,6 @@
 
   export let data: PageData;
 
-  let currentPage = 1;  // 現在のページ番号
   let perPage = 3;  // 1ページあたりの記事数
   let paginatedPosts: Post[]; // ページネーションされた記事の配列
 
@@ -43,8 +42,8 @@
 </section>
 
 <Pagination
-    currentPage={$firstPage}
-    perPage={perPage}
-    totalItems={data.posts.length}
-    onPageChange={changePage}
+  currentPage={$firstPage}
+  perPage={perPage}
+  totalItems={data.posts.length}
+  onPageChange={changePage}
 />

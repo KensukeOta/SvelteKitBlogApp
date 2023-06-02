@@ -74,8 +74,8 @@
   }
 </script>
 
-<div class={`${isReady ? "block" : "hidden"}`}>
-  <nav class="flex justify-center">
+<div class={`fixed bottom-12 w-full flex justify-center ${isReady ? "block" : "hidden"}`}>
+  <nav>
     <ul class="flex">
       {#if currentPage > 1}
         <li>

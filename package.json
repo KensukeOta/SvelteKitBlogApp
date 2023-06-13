@@ -38,6 +38,8 @@
 	"type": "module",
 	"dependencies": {
 		"bootstrap-icons": "^1.10.4",
-		"js-cookie": "^3.0.1"
+		"github-markdown-css": "^5.2.0",
+		"js-cookie": "^3.0.1",
+		"svelte-exmarkdown": "^2.0.0"
 	}
 }

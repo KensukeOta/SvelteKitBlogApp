@@ -76,7 +76,7 @@
 
 <div class={`fixed bottom-12 w-full flex justify-center ${isReady ? "block" : "hidden"}`}>
   <nav>
-    <ul class="flex">
+    <ul class="flex list-none">
       {#if currentPage > 1}
         <li>
           <button class="h-10 rounded w-10 hover:bg-gray-200" on:click={() => changePage(currentPage - 1)}>

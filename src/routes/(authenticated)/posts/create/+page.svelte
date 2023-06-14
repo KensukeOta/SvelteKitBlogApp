@@ -52,5 +52,5 @@
   <TitleArea {...titleProps} />
   <MarkdownArea {md} />
   <Input {...userIdProps} />
-  <button type="submit" class="block border bg-blue-400 rounded-3xl w-48 mx-auto text-white py-2 mt-4 hover:bg-blue-300">投稿する</button>
+  <button type="submit" class="block border bg-blue-400 rounded-3xl w-48 mx-auto text-white py-2 mt-1 hover:bg-blue-300">投稿する</button>
 </form>

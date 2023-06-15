@@ -20,10 +20,14 @@
 
 <section class="p-8">
   <h1 class="font-bold text-4xl">{data.post.title}</h1>
-  <p class="mt-1">by <a href={`/${data.post.user.name}`} class="hover:underline"><Avatar {...avatarProps} />{data.post.user.name}</a></p>
+  <p class="mt-1">
+    by <a href={`/${data.post.user.name}`} class="hover:underline"><Avatar {...avatarProps} />{data.post.user.name}</a>
+  </p>
   
-  <div class="markdown-body mt-16">
-    <Markdown md={data.post.body} plugins={[gfmPlugin]} />
+  <div class="mt-16">
+    <div class="markdown-body">
+      <Markdown md={data.post.body} plugins={[gfmPlugin]} />
+    </div>
   </div>
 </section>
 

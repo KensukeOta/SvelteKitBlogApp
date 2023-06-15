@@ -2,9 +2,7 @@
   import type { SubmitFunction } from "@sveltejs/kit";
 	import type { ActionData, PageData } from "./$types";
 	import { enhance } from "$app/forms";
-  import "github-markdown-css/github-markdown.css";
 	import Input from "$lib/components/atoms/Input.svelte";
-	import TitleArea from "$lib/components/molecules/TitleArea.svelte";
 	import MarkdownArea from "$lib/components/organisms/MarkdownArea.svelte";
 
   export let data: PageData;
@@ -27,7 +25,7 @@
     name: "title",
     id: "title",
     value: `${form?.title || data.post.title}`,
-    placeholder: "タイトル",
+    placeholder: "記事タイトル",
     className: "block border w-full mb-2 p-2",
   };
   
@@ -45,11 +43,11 @@
   <title>記事更新フォーム - SvelteKitBlogApp</title>
 </svelte:head>
 
-<form method="POST" use:enhance={handleSubmit} class="h-full">
+<form method="POST" use:enhance={handleSubmit} class="h-full pt-2">
   {#if form?.errors}
     <p class="text-red-500">{form?.errors.message}</p>
   {/if}
-  <TitleArea {...titleProps} />
+  <Input {...titleProps} />
   <MarkdownArea {md} />
   <Input {...userIdProps} />
   <button type="submit" class="block border bg-blue-400 rounded-3xl w-48 mx-auto text-white py-2 mt-1 hover:bg-blue-300">更新する</button>

@@ -1,5 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { browser } from "$app/environment";
 	import { onMount } from "svelte";
 
   export let currentPage = 1; // 現在のページ番号
@@ -14,6 +16,13 @@
   const updatePagination = () => {
     totalPages = Math.ceil(totalItems / perPage); // 総ページ数を計算
     pages = Array.from({ length: totalPages }, (_, i) => i + 1);  // ページ番号の配列を作成
+  };
+
+  const getBaseURL = () => {
+    const currentURL = $page.url;
+    const url = new URL(currentURL);
+    url.searchParams.delete("page");
+    return url.toString();
   };
 
   const changePage = (page: number, updateUrl: boolean = true) => {
@@ -69,7 +78,13 @@
     if (currentPage > totalPages) {
       currentPage = totalPages;
       onPageChange(currentPage);
-      goto(`?page=${currentPage}`);
+      if (browser) {
+        if (currentPage === 0) {
+          goto(getBaseURL());
+        } else {
+          goto(`?page=${currentPage}`);
+        }
+      }
     }
   }
 </script>

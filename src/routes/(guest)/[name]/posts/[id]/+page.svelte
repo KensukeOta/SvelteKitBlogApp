@@ -5,6 +5,7 @@
   import { gfmPlugin } from "svelte-exmarkdown/gfm";
   import Avatar from "$lib/components/atoms/Avatar.svelte";
   import LikeArea from "$lib/components/molecules/LikeArea.svelte";
+	import CommentArea from "$lib/components/organisms/CommentArea.svelte";
 
   export let data: PageData;
 
@@ -32,3 +33,5 @@
 </section>
 
 <LikeArea post={data.post} />
+
+<CommentArea />

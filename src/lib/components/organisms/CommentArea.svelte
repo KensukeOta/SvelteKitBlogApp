@@ -1,5 +1,9 @@
 <script lang="ts">
 	import CommentMarkdownArea from "./CommentMarkdownArea.svelte";
+
+  export let data: any;
+  
+  export let form: any;
 </script>
 
 <div class="bg-white mt-8 mb-8 py-4">
@@ -12,6 +16,6 @@
     <!-- ↓記事がなかった時 -->
     <p class="px-8 pt-6">この記事にコメントはありません。</p>
     <!-- ↓テキストエリア -->
-    <CommentMarkdownArea />
+    <CommentMarkdownArea {data} {form} />
   </div>
 </div>

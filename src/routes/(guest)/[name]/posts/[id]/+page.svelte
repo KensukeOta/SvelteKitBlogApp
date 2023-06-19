@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
   import "github-markdown-css/github-markdown.css";
   import Markdown from "svelte-exmarkdown";
   import { gfmPlugin } from "svelte-exmarkdown/gfm";
@@ -8,6 +8,8 @@
 	import CommentArea from "$lib/components/organisms/CommentArea.svelte";
 
   export let data: PageData;
+
+  export let form: ActionData;
 
   const avatarProps = {
     src: data.post.user.avatar ? data.post.user.avatar : "/noavatar.jpeg",
@@ -37,5 +39,5 @@
     <LikeArea post={data.post} />
   </div>
 
-  <CommentArea />
+  <CommentArea {data} {form} />
 </div>

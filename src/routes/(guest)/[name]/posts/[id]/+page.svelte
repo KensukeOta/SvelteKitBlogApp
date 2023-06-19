@@ -19,19 +19,23 @@
   <title>{data.post.title} - SvelteKitBlogApp</title>
 </svelte:head>
 
-<section class="p-8">
-  <h1 class="font-bold text-4xl">{data.post.title}</h1>
-  <p class="mt-1">
-    by <a href={`/${data.post.user.name}`} class="hover:underline"><Avatar {...avatarProps} />{data.post.user.name}</a>
-  </p>
-  
-  <div class="mt-16">
-    <div class="markdown-body">
-      <Markdown md={data.post.body} plugins={[gfmPlugin]} />
-    </div>
+<div class="p-8 bg-gray-100 h-full">
+  <div class="bg-white">
+    <section class="p-8">
+      <h1 class="font-bold text-4xl">{data.post.title}</h1>
+      <p class="mt-1">
+        by <a href={`/${data.post.user.name}`} class="hover:underline"><Avatar {...avatarProps} />{data.post.user.name}</a>
+      </p>
+      
+      <div class="mt-16">
+        <div class="markdown-body">
+          <Markdown md={data.post.body} plugins={[gfmPlugin]} />
+        </div>
+      </div>
+    </section>
+    
+    <LikeArea post={data.post} />
   </div>
-</section>
 
-<LikeArea post={data.post} />
-
-<CommentArea />
+  <CommentArea />
+</div>

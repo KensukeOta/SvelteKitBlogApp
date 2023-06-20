@@ -13,7 +13,7 @@
 
   const avatarProps = {
     src: data.post.user.avatar ? data.post.user.avatar : "/noavatar.jpeg",
-    className: "inline-block border h-8 mx-1 w-8 object-cover rounded-full"
+    className: "inline-block border h-9 mx-1 w-9 object-cover rounded-full"
   };
 </script>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import CommentMarkdownArea from "./CommentMarkdownArea.svelte";
+	import CommentItem from "./CommentItem.svelte";
+  import CommentMarkdownArea from "./CommentMarkdownArea.svelte";
 
   export let data: any;
 
@@ -9,13 +10,12 @@
 <div class="bg-white mt-8 py-4">
   <div class="w-full">
     <p class="border-b font-bold px-8 pb-2">コメント</p>
-    <!-- ↓繰り返し処理 -->
-    <section class="px-8 py-6 border-b">
-      <p>asdff</p>
-    </section>
-    <!-- ↓記事がなかった時 -->
-    <p class="px-8 pt-6">この記事にコメントはありません。</p>
-    <!-- ↓テキストエリア -->
+    {#each data.post.comments as comment (comment.id)}
+      <CommentItem {comment} />
+    {:else}
+      <p class="px-8 pt-6">この記事にコメントはありません。</p>
+    {/each}
+
     {#if !data.authUser}
       <div class="bg-gray-200 mt-4 mx-8 p-6 rounded-lg text-center">
         <p>ログインするとコメントをすることができます！</p>

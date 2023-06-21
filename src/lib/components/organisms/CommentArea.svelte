@@ -11,7 +11,7 @@
   <div class="w-full">
     <p class="border-b font-bold px-8 pb-2">コメント</p>
     {#each data.post.comments as comment (comment.id)}
-      <CommentItem {comment} />
+      <CommentItem {comment} {form} />
     {:else}
       <p class="px-8 pt-6">この記事にコメントはありません。</p>
     {/each}

@@ -49,14 +49,14 @@
 
 <div class="px-8 pt-6">
   <p class="font-bold">コメントする</p>
-  {#if form?.errors}
+  {#if form?.errors && form?.create}
     <p class="text-red-500">{form.errors.message}</p>
   {/if}
   <div class="border mt-2 rounded-lg">
     <div class="flex bg-gray-200">
       <button
-      class={`${activeTab === "tab1" ? "bg-white" : "border-transparent text-gray-400 hover:text-black"} font-bold px-4 py-2 focus:outline-none`}
-      on:click={() => setActiveTab('tab1')}
+        class={`${activeTab === "tab1" ? "bg-white" : "border-transparent text-gray-400 hover:text-black"} font-bold px-4 py-2 focus:outline-none`}
+        on:click={() => setActiveTab('tab1')}
       >
         編集
       </button>
@@ -69,7 +69,7 @@
     </div>
   
     <div class="overflow-hidden p-2">
-      <form method="POST" use:enhance={handleSubmit}>
+      <form method="POST" action="?/createComment" use:enhance={handleSubmit}>
         {#if activeTab === 'tab1'}
           <!-- タブ1のコンテンツ -->
           <textarea bind:value={md} name="body" id="body" placeholder="マークダウン記法で記述することができます。" class="border h-24 overflow-y-auto p-2 rounded-lg text-sm w-full" />

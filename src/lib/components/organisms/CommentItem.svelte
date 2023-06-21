@@ -8,6 +8,7 @@
   import { gfmPlugin } from "svelte-exmarkdown/gfm";
 	import Avatar from "../atoms/Avatar.svelte";
 	import Input from "../atoms/Input.svelte";
+	import CommentDeleteButton from "../atoms/CommentDeleteButton.svelte";
 
   export let form: any;
 
@@ -75,7 +76,7 @@
       {#if $page.data.authUser && $page.data.authUser.id === comment.user_id}
         <div class="flex flex-col text-sm">
           <button on:click={() => isUpdate = true} class="text-green-500">更新</button>
-          <button class="text-red-500">削除</button>
+          <CommentDeleteButton {comment} />
         </div>
       {/if}
     </p>

@@ -28,3 +28,4 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - フォロー機能
 - ページネーション機能
 - マークダウン機能
+- コメント機能

@@ -13,7 +13,7 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - コンポーネント設計: __Atomic Design__
 - バージョン管理ツール: __Git__ / __GitHub__
 - タスク管理: __GitHub Issues__
-- その他言語: __Svelte3.58.0__, __TypeScript5.0.4__, __HTML/CSS__
+- その他言語: __Svelte4.0.0__, __TypeScript5.0.4__, __HTML/CSS__
 
 ## 機能
 - ログイン機能

@@ -11,14 +11,14 @@
 
   let md = form?.body ?? "";
 
-  const handleSubmit: SubmitFunction = ({ submitter }) => {
+  const handleSubmit = (({ submitter }) => {
     submitter?.setAttribute("disabled", "true");
 
     return async ({ update }) => {
       await update();
       submitter?.removeAttribute("disabled");
     };
-  };
+  }) satisfies SubmitFunction;
 
   const titleProps = {
     type: "text",

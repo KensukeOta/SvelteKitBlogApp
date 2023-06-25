@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
+export const load = (async ({ fetch, locals, params }) => {
   const authUser = locals.authUser;
   let res;
   let data;
@@ -24,4 +24,4 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
     authUser,
     user: data.user,
   };
-})
+}) satisfies PageServerLoad;

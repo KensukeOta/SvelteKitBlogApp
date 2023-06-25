@@ -1,6 +1,6 @@
 import type { Handle } from "@sveltejs/kit";
 
-export const handle: Handle = (async ({ event, resolve }) => {
+export const handle = (async ({ event, resolve }) => {
   try {
     if (!event.locals.authUser) {
       const res = await event.fetch(`${import.meta.env.VITE_API_URL}/v1/user`, {
@@ -22,4 +22,4 @@ export const handle: Handle = (async ({ event, resolve }) => {
   const response = await resolve(event);
 
   return response;
-})
+}) satisfies Handle;

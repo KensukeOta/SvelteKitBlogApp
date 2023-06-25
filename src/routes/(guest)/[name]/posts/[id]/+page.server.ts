@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 
-export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
+export const load = (async ({ fetch, locals, params }) => {
   const authUser = locals.authUser;
   let res;
   let data;
@@ -29,9 +29,9 @@ export const load: PageServerLoad = (async ({ fetch, locals, params }) => {
     authUser,
     post: data.post,
   };
-})
+}) satisfies PageServerLoad;
 
-export const actions: Actions = {
+export const actions = {
   createComment: async ({ cookies, fetch, request }) => {
     const data = await request.formData();
     let errors;
@@ -94,4 +94,4 @@ export const actions: Actions = {
       return fail(400, { body, errors, comment_id, edit: true });
     }
   },
-};
+} satisfies Actions;

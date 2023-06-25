@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 
-export const load: PageServerLoad = (async ({ locals }) => {
+export const load = (async ({ locals }) => {
   const authUser = locals.authUser;
 
   if (!authUser) {
@@ -11,9 +11,9 @@ export const load: PageServerLoad = (async ({ locals }) => {
   return {
     authUser,
   };
-})
+}) satisfies PageServerLoad;
 
-export const actions: Actions = {
+export const actions = {
   default: async ({ cookies, fetch, request }) => {
     const data = await request.formData();
     let errors;
@@ -46,4 +46,4 @@ export const actions: Actions = {
 
     throw redirect(303, "/");
   },
-};
+} satisfies Actions;

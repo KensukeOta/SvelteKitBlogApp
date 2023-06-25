@@ -24,7 +24,7 @@
     activeTab = tab;
   };
 
-  const handleSubmit: SubmitFunction = ({ submitter }) => {
+  const handleSubmit = (({ submitter }) => {
     submitter?.setAttribute("disabled", "true");
 
     return async ({ result, update }) => {
@@ -34,7 +34,7 @@
       }
       submitter?.removeAttribute("disabled");
     };
-  };
+  }) satisfies SubmitFunction;
 
   const avatarProps = {
     src: comment.user.avatar ? comment.user.avatar : "/noavatar.jpeg",

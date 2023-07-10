@@ -2,6 +2,13 @@
   import { page } from "$app/stores";
   import { firstPage } from "$lib/stores/firstPage";
 	import AvatarDropdownToggle from "../molecules/AvatarDropdownToggle.svelte";
+	import PostSearchForm from "../molecules/PostSearchForm.svelte";
+
+  let isSearch = false;
+
+  const toggleSearch = () => {
+    isSearch = !isSearch;
+  };
 
   const goToTopPage = () => {
     firstPage.set(1);
@@ -15,13 +22,17 @@
     </button>
     <h1 class="inline-block">
       <a href="/" class="inline-block" on:click={goToTopPage}>
-        <img src="/svelte-logo.svg" alt="Svelte Logo" width="24" height="24" class="inline-block" />
+        <img src="/svelte-logo.svg" alt="Svelte Logo" width="24" height="24" class="inline-block" /><span class="hidden lg:inline-block">SvelteKitBlogApp</span>
       </a>
     </h1>
   </div>
 
+  <div class="hidden lg:block">
+    <PostSearchForm />
+  </div>
+
   <nav class="leading-9">
-    <button title="検索" class="px-2">
+    <button on:click={toggleSearch} title="検索" class="px-2 lg:hidden">
       <i class="bi bi-search"></i>
     </button>
     {#if !$page.data.authUser}
@@ -32,3 +43,6 @@
     {/if}
   </nav>
 </header>
+{#if isSearch}
+  <PostSearchForm />
+{/if}

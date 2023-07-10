@@ -2,6 +2,13 @@
   import { page } from "$app/stores";
   import { firstPage } from "$lib/stores/firstPage";
 	import AvatarDropdownToggle from "../molecules/AvatarDropdownToggle.svelte";
+	import PostSearchForm from "../molecules/PostSearchForm.svelte";
+
+  let isSearch = false;
+
+  const toggleSearch = () => {
+    isSearch = !isSearch;
+  };
 
   const goToTopPage = () => {
     firstPage.set(1);
@@ -21,7 +28,7 @@
   </div>
 
   <nav class="leading-9">
-    <button title="検索" class="px-2">
+    <button on:click={toggleSearch} title="検索" class="px-2">
       <i class="bi bi-search"></i>
     </button>
     {#if !$page.data.authUser}
@@ -32,3 +39,6 @@
     {/if}
   </nav>
 </header>
+{#if isSearch}
+  <PostSearchForm />
+{/if}

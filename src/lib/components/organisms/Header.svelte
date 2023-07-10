@@ -27,8 +27,12 @@
     </h1>
   </div>
 
+  <div class="hidden lg:block">
+    <PostSearchForm />
+  </div>
+
   <nav class="leading-9">
-    <button on:click={toggleSearch} title="検索" class="px-2">
+    <button on:click={toggleSearch} title="検索" class="px-2 lg:hidden">
       <i class="bi bi-search"></i>
     </button>
     {#if !$page.data.authUser}

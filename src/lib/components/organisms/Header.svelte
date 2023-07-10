@@ -22,7 +22,7 @@
     </button>
     <h1 class="inline-block">
       <a href="/" class="inline-block" on:click={goToTopPage}>
-        <img src="/svelte-logo.svg" alt="Svelte Logo" width="24" height="24" class="inline-block" />
+        <img src="/svelte-logo.svg" alt="Svelte Logo" width="24" height="24" class="inline-block" /><span class="hidden lg:inline-block">SvelteKitBlogApp</span>
       </a>
     </h1>
   </div>

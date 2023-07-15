@@ -9,7 +9,7 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - CSSフレームワーク: __Tailwind CSS__
 - アイコンライブラリ: __Bootstrap Icons__
 - 認証ライブラリ __Laravel Sanctum__
-- その他ライブラリ __svelte-exmarkdown2.0.0__, __github-markdown-css5.2.0__, __svelte-tags-input5.0.0, __js-cookie__
+- その他ライブラリ __svelte-exmarkdown2.0.0__, __github-markdown-css5.2.0__, __svelte-tags-input5.0.0__, __js-cookie__
 - コンポーネント設計: __Atomic Design__
 - バージョン管理ツール: __Git__ / __GitHub__
 - タスク管理: __GitHub Issues__

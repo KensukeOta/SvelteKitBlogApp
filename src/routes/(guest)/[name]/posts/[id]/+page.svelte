@@ -31,7 +31,7 @@
       <div class="mt-2 flex items-center gap-2">
         <i class="bi bi-tag-fill text-xl"></i>
         <div>
-          {#each data.post.tags as tag, i (tag.id) }
+          {#each data.post.tags as tag, i (tag.id)}
             <a href={`/tags/${tag.name}`} class="text-sm hover:underline">{tag.name}</a>{#if i !== data.post.tags.length - 1},&nbsp;{/if}
           {/each}
         </div>

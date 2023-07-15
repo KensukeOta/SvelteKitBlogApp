@@ -17,7 +17,7 @@
 
   <div class="mt-2">
     <i class="bi bi-tag-fill text-sm"></i>
-    {#each post.tags as tag, i (tag.id) }
+    {#each post.tags as tag, i (tag.id)}
       <a href={`/tags/${tag.name}`} class="text-sm hover:underline">{tag.name}</a>{#if i !== post.tags.length - 1},&nbsp;{/if}
     {/each}
   </div>

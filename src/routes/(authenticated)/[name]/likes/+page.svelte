@@ -12,7 +12,7 @@
 <h1 class="font-bold mb-2">いいねした記事一覧</h1>
 
 <section>
-  {#each data.posts as post (post.id) }
+  {#each data.posts as post (post.id)}
     <PostItem {post} />
   {:else}
     <p class="font-bold text-center p-2">いいねしている記事がありません</p>

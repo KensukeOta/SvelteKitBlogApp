@@ -1,5 +1,6 @@
 import type { User } from "./User";
 import type { Like } from "./Like";
+import type { Tag } from "./Tag";
 
 export interface Post {
   id: number;
@@ -7,5 +8,6 @@ export interface Post {
   body: string;
   user_id: number;
   user: User;
-  likes: Like[]
+  likes: Like[];
+  tags: Tag[];
 }

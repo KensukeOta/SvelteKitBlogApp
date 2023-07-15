@@ -19,6 +19,8 @@ export const actions = {
     let errors;
     
     const title = data.get("title");
+    let tags = data.get("tags") as any;
+    tags = tags.split(",");
     const body = data.get("body");
     const user_id = data.get("user_id");
 
@@ -30,7 +32,7 @@ export const actions = {
           "Content-Type": "application/json",
           "X-XSRF-TOKEN": cookies.get("XSRF-TOKEN") ?? "",
         },
-        body: JSON.stringify({ title, body, user_id })
+        body: JSON.stringify({ title, body, user_id, tags })
       });
       if (!res.ok) {
         errors = await res.json();

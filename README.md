@@ -3,13 +3,13 @@ SvelteKitを使用した完全SPAのブログアプリです。
 
 ## 使用した技術・ツール
 - 開発環境: __Docker__, __docker compose__
-- バックエンド: __Laravel10.9.0__
+- バックエンド: __Laravel10.15.0__
 https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - フロントエンド: __SvelteKit__
 - CSSフレームワーク: __Tailwind CSS__
 - アイコンライブラリ: __Bootstrap Icons__
 - 認証ライブラリ __Laravel Sanctum__
-- その他ライブラリ __svelte-exmarkdown2.0.0__, __github-markdown-css5.2.0__, __js-cookie__
+- その他ライブラリ __svelte-exmarkdown2.0.0__, __github-markdown-css5.2.0__, __svelte-tags-input5.0.0, __js-cookie__
 - コンポーネント設計: __Atomic Design__
 - バージョン管理ツール: __Git__ / __GitHub__
 - タスク管理: __GitHub Issues__
@@ -30,3 +30,4 @@ https://github.com/KensukeOta/API-for-SvelteKitBlogApp
 - マークダウン機能
 - コメント機能
 - 記事検索機能
+- タグ機能

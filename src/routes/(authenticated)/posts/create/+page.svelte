@@ -51,7 +51,7 @@
     <p class="text-red-500">{form.errors.message}</p>
   {/if}
   <Input {...titleProps} />
-  <div class="my-custom-class mb-2">
+  <div class="mb-2">
     <Tags bind:tags={tags} addKeys={[32]} maxTags={5} onlyUnique={true} placeholder={"(任意) タグを入力してください。スペース区切りで5つまで入力できます。"} />
     <input type="hidden" name="tags" bind:value={tags} />
   </div>
@@ -59,13 +59,3 @@
   <Input {...userIdProps} />
   <button type="submit" class="block border bg-blue-400 rounded-3xl w-48 mx-auto text-white py-2 mt-1 hover:bg-blue-300">投稿する</button>
 </form>
-
-<style>
-  .my-custom-class :global(.svelte-tags-input-tag) {
-    background:blue;
-  }
-							
-  .my-custom-class :global(.svelte-tags-input-layout) {
-    background:yellow;
-  }
-</style>

@@ -5,6 +5,7 @@
 
 <ul class="absolute top-9 right-0 bg-white border cursor-auto list-none py-1 rounded-md text-center w-40">
   <li><a href={`/${$page.data.authUser.name}`}>マイページ</a></li>
+  <li><a href="/timeline">タイムライン</a></li>
   <li><a href={`/${$page.data.authUser.name}/likes`}>いいねした記事</a></li>
   <hr class="my-1.5">
   <li><LogoutButton /></li>
